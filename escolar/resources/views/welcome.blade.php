@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Sistema para graduaciones y firma de titulos
+                    Sistema para graduaciones y firma de titulos.
                 </div>
 
                 <div class="links">
