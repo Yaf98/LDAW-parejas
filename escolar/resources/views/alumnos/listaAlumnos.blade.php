@@ -12,7 +12,7 @@
             <form id="formulario" method="GET" action="/alumnos/buscar-alumnos">
                 <div class="form-group">
                     <label for="idAlumno"> Buscar alumno </label>
-                    <input id="idAlumno" name="idAlumno" class="form-control" value="{{ request()->idAlumno ?? '' }}" required />
+                    <input id="idAlumno" name="idAlumno" class="form-control" value="{{ request()->id_alumno ?? '' }}"/>
                 </div>
                 <div class="form-group">
                     <button class="btn btn-success btn-block">
@@ -26,11 +26,13 @@
 
             @if( count($eventoalumnos) > 0 )
                 <div class="mt-5">
-                    <h5> Lugares </h5>
+                    <h5> Alumnos </h5>
                     <ul class="list-group">
                         @foreach( $eventoalumnos as $ea )
-                            <li class="list-group-item">{{ $ea->idAlumno }}</li>
-                            <li class="list-group-item">{{ $ea->lugar_alumno }}</li>
+                            <li class="list-group-item">{{ $ea->id_alumno }}</li>
+                            <li class="list-group-item">{{ $ea->nombre_alumno }}</li>
+                            <li class="list-group-item">{{ $ea->promedio }}</li>
+                            <li class="list-group-item">{{ $ea->carrera }}</li>
                             <br>
                         @endforeach
                     </ul>
