@@ -11,23 +11,13 @@
     <title>@yield('title')</title>
 </head>
 <body>
-    <header>
-        <div class="navbar navbar-dark bg-dark shadow-sm">
-          <div class="container d-flex justify-content-between">
-            <a href="/alumnos" class="navbar-brand d-flex align-items-center">
-              <strong>Página de inicio</strong>
-            </a>
-          </div>
-        </div>
-      </header>
-    
-      
+
     </main>
      <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ config('app.name', 'Graduaciones') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
