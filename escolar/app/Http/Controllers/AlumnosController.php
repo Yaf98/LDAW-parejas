@@ -16,15 +16,19 @@ class AlumnosController extends Controller{
         return view('alumnos.chequearEvento');
     }
 
+    public function mostrarListaAlumnos(Request $request){
+        return view('alumnos.listaAlumnos');
+    }
+
     public function chequearEvento(Request $request){
         $idAlumno = $request->idAlumno;
         if( !$idAlumno )
             return response()->json(['success' => false, 'error' => 'ID Alumno es requerido']);
-        
+
         $alumno = Alumno::find($idAlumno);
         if( !$alumno )
             return response()->json(['success' => false, 'error' => 'No existe ningún alumno con ID: '.$idAlumno]);
-        
+
         if( $alumno->asistencia )
             return response()->json(['success' => false, 'error' => 'El alumno ya tiene confirmada la asistencia']);
 
@@ -41,14 +45,14 @@ class AlumnosController extends Controller{
 
         if( $idAlumno ){
             $eventoalumnos = EventoAlumno::whereIdAlumno($idAlumno)->get();
-            
+
             if( count($eventoalumnos) == 0 )
                 $showError = true;
         }
-        
+
         return view('alumnos.buscarLugarAlumno', [
             'showError' => $showError,
             'eventoalumnos' => $eventoalumnos
         ]);
-    }    
+    }
 }
