@@ -37,7 +37,7 @@ Route::get('/welcome', function () {
 
 Auth::routes();
 
-Route::get('/', 'AlumnosController@mostrarOpciones')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 
 
 
