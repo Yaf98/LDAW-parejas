@@ -14,7 +14,9 @@ class CreateRolprivilegioTable extends Migration
     public function up()
     {
         Schema::create('rolprivilegio', function (Blueprint $table) {
-            $table-> id('id_rol_privilegio'); 
+            $table-> id('id_rol_privilegio');
+            $table->unsignedBigInteger('id_rol'); 
+            $table->unsignedBigInteger('id_privilegio');
             $table-> foreign('id_rol')-> references('id_rol')->on('rol');
             $table-> foreign('id_privilegio')-> references('id_privilegio')->on('privilegio'); 
         });
