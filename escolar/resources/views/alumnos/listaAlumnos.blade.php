@@ -11,12 +11,12 @@
         <div class="col-md-6 m-auto">
             <form id="formulario" method="GET" action="/alumnos/buscar-alumnos">
                 <div class="form-group">
-                    <label for="idAlumno"> Buscar </label>
+                    <label for="idAlumno"> Buscar alumno </label>
                     <input id="idAlumno" name="idAlumno" class="form-control" value="{{ request()->idAlumno ?? '' }}" required />
                 </div>
                 <div class="form-group">
                     <button class="btn btn-success btn-block">
-                        Buscar
+                        Enter
                     </button>
                 </div>
                 @if( $showError )
