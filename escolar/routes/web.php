@@ -34,10 +34,11 @@ Route::get('/welcome', function () {
     return view('welcome');
 });
 
-//Route::get('asistencias/','Asistencias@index');
+
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'AlumnosController@mostrarOpciones')->name('home');
+
 
 
 Route:: namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:manage-users')->group(function(){
