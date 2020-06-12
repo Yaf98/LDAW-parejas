@@ -63,7 +63,7 @@ class AlumnosController extends Controller{
         $showError = false;
 
         if( $idAlumno ){
-            $eventoalumnos = EventoAlumno::whereIdAlumno($idAlumno)->get();
+            $eventoalumnos = DB::table('alumno')->where('id_alumno','=',$idAlumno)->get();;
 
             if( count($eventoalumnos) == 0 )
                 $showError = true;
