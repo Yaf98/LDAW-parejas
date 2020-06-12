@@ -25,6 +25,7 @@ Route::group(['prefix' => 'alumnos'], function(){
     Route::post('/chequearEvento', 'AlumnosController@chequearEvento');
     Route::get('/buscar', 'AlumnosController@mostrarBuscarLugarAlumno');
     Route::get('/buscarLugarAlumno', 'AlumnosController@buscarLugarAlumno');
+    Route::get('/asistencias', 'Asistencias@index');
     Route::get('/lista', 'AlumnosController@mostrarListaAlumnos');
 });
 
@@ -32,7 +33,7 @@ Route::get('/welcome', function () {
     return view('welcome');
 });
 
-Route::get('/asistencias','Asistencias@index');
+//Route::get('asistencias/','Asistencias@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
