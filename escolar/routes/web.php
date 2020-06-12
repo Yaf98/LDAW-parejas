@@ -26,19 +26,17 @@ Route::group(['prefix' => 'alumnos'], function(){
     Route::get('/buscar', 'AlumnosController@mostrarBuscarLugarAlumno');
     Route::get('/buscarLugarAlumno', 'AlumnosController@buscarLugarAlumno');
     Route::get('/asistencias', 'Asistencias@index');
-    Route::get('/lista', 'AlumnosController@mostrarBuscarListaAlumnos');
-    Route::get('/buscar-alumnos', 'AlumnosController@mostrarBuscarListaAlumnos');
+    Route::get('/lista', 'AlumnosController@mostrarListaAlumnos');
 });
 
 Route::get('/welcome', function () {
     return view('welcome');
 });
 
-
+Route::get('asistencias/','Asistencias@index');
 Auth::routes();
 
-Route::get('/', 'AlumnosController@mostrarOpciones')->name('home');
-
+Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route:: namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:manage-users')->group(function(){
