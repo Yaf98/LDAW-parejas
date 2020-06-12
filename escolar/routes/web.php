@@ -26,7 +26,8 @@ Route::group(['prefix' => 'alumnos'], function(){
     Route::get('/buscar', 'AlumnosController@mostrarBuscarLugarAlumno');
     Route::get('/buscarLugarAlumno', 'AlumnosController@buscarLugarAlumno');
     Route::get('/asistencias', 'Asistencias@index');
-    Route::get('/lista', 'AlumnosController@mostrarListaAlumnos');
+    Route::get('/lista', 'AlumnosController@mostrarBuscarListaAlumnos');
+    Route::get('/buscar-alumnos', 'AlumnosController@mostrarBuscarListaAlumnos');
 });
 
 Route::get('/welcome', function () {

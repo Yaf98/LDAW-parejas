@@ -9,20 +9,19 @@
 
     <div class="row mt-5">
         <div class="col-md-6 m-auto">
-            <form id="formulario" method="GET" action="/alumnos/buscar">
+            <form id="formulario" method="GET" action="/alumnos/buscar-alumnos">
                 <div class="form-group">
-                    <label for="idAlumno"> ID Alumno </label>
-                    <input id="idAlumno" name="idAlumno" class="form-control" value="{{ request()->idAlumno ?? '0' }}" required />
+                    <label for="idAlumno"> Buscar </label>
+                    <input id="idAlumno" name="idAlumno" class="form-control" value="{{ request()->idAlumno ?? '' }}" required />
                 </div>
-                @if( $showError )
-                    <div class="alert alert-danger"> No existe el alumno buscado </div>
-                @endif
-
                 <div class="form-group">
                     <button class="btn btn-success btn-block">
                         Buscar
                     </button>
                 </div>
+                @if( $showError )
+                    <div class="alert alert-danger"> No existe el alumno buscado </div>
+                @endif
             </form>
 
             @if( count($eventoalumnos) > 0 )

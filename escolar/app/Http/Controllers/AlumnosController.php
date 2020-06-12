@@ -55,4 +55,22 @@ class AlumnosController extends Controller{
             'eventoalumnos' => $eventoalumnos
         ]);
     }
+
+    public function mostrarBuscarListaAlumnos(Request $request){
+        $idAlumno  = $request->idAlumno ?? NULL;
+        $eventoalumnos = [];
+        $showError = false;
+
+        if( $idAlumno ){
+            $eventoalumnos = EventoAlumno::whereIdAlumno($idAlumno)->get();
+
+            if( count($eventoalumnos) == 0 )
+                $showError = true;
+        }
+
+        return view('alumnos.listaAlumnos', [
+            'showError' => $showError,
+            'eventoalumnos' => $eventoalumnos
+        ]);
+    }
 }
