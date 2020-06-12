@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Alumno;
 use App\Models\EventoAlumno;
+use Illuminate\Support\Facades\DB;
 
 class AlumnosController extends Controller{
 
@@ -66,6 +67,8 @@ class AlumnosController extends Controller{
 
             if( count($eventoalumnos) == 0 )
                 $showError = true;
+        } else {
+          $eventoalumnos = DB::table('alumno')->get();
         }
 
         return view('alumnos.listaAlumnos', [
