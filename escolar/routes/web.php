@@ -25,6 +25,7 @@ Route::group(['prefix' => 'alumnos'], function(){
     Route::post('/chequearEvento', 'AlumnosController@chequearEvento');
     Route::get('/buscar', 'AlumnosController@mostrarBuscarLugarAlumno');
     Route::get('/buscarLugarAlumno', 'AlumnosController@buscarLugarAlumno');
+    Route::get('/listaAlumnos', 'AlumnosController@mostrarListaAlumnos');
 });
 
 Route::get('/welcome', function () {
