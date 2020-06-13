@@ -14,12 +14,13 @@ class CreateEventoTable extends Migration
     public function up()
     {
         Schema::create('evento', function (Blueprint $table) {
-             $table-> id('id_evento'); 
+             $table-> id('id_evento');
              $table-> string('nombre_evento');
-             $table-> string('tipo_evento'); 
+             $table-> string('tipo_evento');
              $table-> date('fecha_evento');
              $table-> string('lugar_evento');
-             $table-> integer('alumnos_fila');
+             $table-> integer('filas');
+             $table-> integer('columnas');
         });
     }
 

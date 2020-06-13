@@ -27,15 +27,29 @@
             @if( count($eventoalumnos) > 0 )
                 <div class="mt-5">
                     <h5> Alumnos </h5>
-                    <ul class="list-group">
-                        @foreach( $eventoalumnos as $ea )
+                    <div class="table-responsive-xl">
+                    <table class="table">
+                      <tbody>
+                      @foreach( $eventoalumnos as $ea )
+                      @if ( ($columnas / $loop->iteration) == $columnas)
+                      <tr>
+                        @endif
+                        <td scope="col">
+                        <ul class="list-group">
                             <li class="list-group-item">{{ $ea->id_alumno }}</li>
                             <li class="list-group-item">{{ $ea->nombre_alumno }}</li>
                             <li class="list-group-item">{{ $ea->promedio }}</li>
                             <li class="list-group-item">{{ $ea->carrera }}</li>
                             <br>
-                        @endforeach
-                    </ul>
+                        </ul>
+                      </td>
+                      @if ( ($columnas / $loop->iteration) == 1)
+                        </tr>
+                        @endif
+                      @endforeach
+                    </tbody>
+                  </table>
+                </div>
                 </div>
             @endif
         </div>

@@ -60,18 +60,22 @@ class AlumnosController extends Controller{
     public function mostrarBuscarListaAlumnos(Request $request){
         $idAlumno  = $request->idAlumno ?? NULL;
         $eventoalumnos = [];
+        $evento;
         $showError = false;
 
+        $evento = DB::table('evento')->where('id_evento', '=', '1')->value('columnas');
+
         if( $idAlumno ){
-            $eventoalumnos = DB::table('alumno')->where('id_alumno','=',$idAlumno)->get();;
+            $eventoalumnos = DB::table('alumno')->where('id_alumno', '=', $idAlumno)->get();
 
             if( count($eventoalumnos) == 0 )
                 $showError = true;
         } else {
-          $eventoalumnos = DB::table('alumno')->get();
+          $eventoalumnos = DB::table('alumno')->orderByDesc('promedio')->get();
         }
 
         return view('alumnos.listaAlumnos', [
+            'columnas' => $evento,
             'showError' => $showError,
             'eventoalumnos' => $eventoalumnos
         ]);

@@ -17,7 +17,7 @@ class CreateAlumnoTable extends Migration
             $table-> id('id_alumno');
             $table-> string('nombre_alumno');
             $table-> float('promedio');
-            $table-> string('carrera'); 
+            $table-> string('carrera');
             $table-> boolean('mencion_honorifica');
             $table-> boolean('mencion_excelencia');
             $table-> boolean('asistencia');
