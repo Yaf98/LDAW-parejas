@@ -17,7 +17,7 @@
                 @if( $showError )
                     <div class="alert alert-danger"> No existe el alumno buscado </div>
                 @endif
-                
+
                 <div class="form-group">
                     <button class="btn btn-success btn-block">
                         Buscar
@@ -30,7 +30,8 @@
                     <h5> Lugares </h5>
                     <ul class="list-group">
                         @foreach( $eventoalumnos as $ea )
-                            <li class="list-group-item">{{ $ea->lugar_alumno }}</li>
+                            <li class="list-group-item">Fila: {{ $ea->fila }}</li>
+                            <li class="list-group-item">Columna: {{ $ea->columna }}</li>
                         @endforeach
                     </ul>
                 </div>

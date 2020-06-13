@@ -26,7 +26,7 @@ Route::group(['prefix' => 'alumnos'], function(){
     Route::get('/buscar', 'AlumnosController@mostrarBuscarLugarAlumno');
     Route::get('/buscarLugarAlumno', 'AlumnosController@buscarLugarAlumno');
     Route::get('/asistencias', 'Asistencias@index');
-    Route::get('/lista', 'AlumnosController@mostrarListaAlumnos');
+    Route::get('/lista', 'AlumnosController@mostrarBuscarListaAlumnos');
 });
 
 Route::get('/welcome', function () {
@@ -40,5 +40,3 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route:: namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:manage-users')->group(function(){
     Route:: resource('/users','UsersController',['except'=>['show','create','store']]);
 });
-
-
