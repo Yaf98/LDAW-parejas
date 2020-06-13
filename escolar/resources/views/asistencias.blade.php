@@ -1,12 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Asistencias</title>
-</head>
-<body>
-    <h1>Alumnos que asistieron</h1>
+@extends('layouts.app')
+
+@section('title')
+    Alumnos que asistieron
+@endsection
+
+@section('content')
+    <h1>Alumnos que asistieron</h1><br>
       <table class="table">
                        <thead>
                             <tr>
@@ -29,6 +28,4 @@
                         </tbody>
                     </table>
  
-    
-</body>
-</html>
+@endsection
