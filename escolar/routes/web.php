@@ -19,6 +19,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::group(['prefix' => 'alumnos'], function(){
+    Route::get('/', 'AlumnosController@mostrarOpciones');
+    Route::get('/chequearEvento', 'AlumnosController@mostrarChequearForm');
+    Route::post('/chequearEvento', 'AlumnosController@chequearEvento');
+    Route::get('/buscar', 'AlumnosController@mostrarBuscarLugarAlumno');
+    Route::get('/buscarLugarAlumno', 'AlumnosController@buscarLugarAlumno');
+});
+
 Route::get('/welcome', function () {
     return view('welcome');
 });

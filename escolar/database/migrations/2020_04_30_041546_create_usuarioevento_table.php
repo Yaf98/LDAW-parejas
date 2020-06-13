@@ -15,6 +15,8 @@ class CreateUsuarioeventoTable extends Migration
     {
         Schema::create('usuarioevento', function (Blueprint $table) {
             $table-> id('id_usuario_evento'); 
+            $table->unsignedBigInteger('id_evento');
+            $table->unsignedBigInteger('id_usuario');
             $table-> foreign('id_evento')-> references('id_evento')->on('evento');
             $table-> foreign('id_usuario')-> references('id_usuario')->on('usuario'); 
         });
