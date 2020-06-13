@@ -24,14 +24,18 @@ Route::group(['prefix' => 'alumnos'], function(){
     Route::get('/chequearEvento', 'AlumnosController@mostrarChequearForm');
     Route::post('/chequearEvento', 'AlumnosController@chequearEvento');
     Route::get('/buscar', 'AlumnosController@mostrarBuscarLugarAlumno');
-    Route::get('/buscarLugarAlumno', 'AlumnosController@buscarLugarAlumno');
+    Route::get('/asistencias','Asistencias@index');
+    Route::get('/lista', 'AlumnosController@mostrarBuscarListaAlumnos');
+    Route::get('/lista/editar/{id}', 'AlumnosController@editar_alumno');
+    Route::put('/lista/update/{id}', 'AlumnosController@update_alumno');
+    Route::get('/buscar-alumnos', 'AlumnosController@mostrarBuscarListaAlumnos');
 });
 
 Route::get('/welcome', function () {
     return view('welcome');
 });
 
-Route::get('asistencias/','Asistencias@index');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

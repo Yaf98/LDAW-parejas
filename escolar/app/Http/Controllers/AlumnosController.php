@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Alumno;
 use App\Models\EventoAlumno;
+use Illuminate\Support\Facades\DB;
 
 class AlumnosController extends Controller{
 
@@ -16,15 +17,19 @@ class AlumnosController extends Controller{
         return view('alumnos.chequearEvento');
     }
 
+    public function mostrarListaAlumnos(Request $request){
+        return view('alumnos.listaAlumnos');
+    }
+
     public function chequearEvento(Request $request){
         $idAlumno = $request->idAlumno;
         if( !$idAlumno )
             return response()->json(['success' => false, 'error' => 'ID Alumno es requerido']);
-        
+
         $alumno = Alumno::find($idAlumno);
         if( !$alumno )
             return response()->json(['success' => false, 'error' => 'No existe ningún alumno con ID: '.$idAlumno]);
-        
+
         if( $alumno->asistencia )
             return response()->json(['success' => false, 'error' => 'El alumno ya tiene confirmada la asistencia']);
 
@@ -41,14 +46,57 @@ class AlumnosController extends Controller{
 
         if( $idAlumno ){
             $eventoalumnos = EventoAlumno::whereIdAlumno($idAlumno)->get();
-            
+
             if( count($eventoalumnos) == 0 )
                 $showError = true;
         }
-        
+
         return view('alumnos.buscarLugarAlumno', [
             'showError' => $showError,
             'eventoalumnos' => $eventoalumnos
         ]);
-    }    
+    }
+
+    public function mostrarBuscarListaAlumnos(Request $request){
+        $idAlumno  = $request->idAlumno ?? NULL;
+        $eventoalumnos = [];
+        $showError = false;
+
+        if( $idAlumno ){
+            $eventoalumnos = DB::table('alumno')->where('id_alumno','=',$idAlumno)->get();;
+
+            if( count($eventoalumnos) == 0 )
+                $showError = true;
+        } else {
+          $eventoalumnos = DB::table('alumno')->get();
+        }
+
+        return view('alumnos.listaAlumnos', [
+            'showError' => $showError,
+            'eventoalumnos' => $eventoalumnos
+        ]);
+    }
+
+
+    public function editar_alumno($id){
+
+        $editAlumno = alumno::find($id);
+        return view('alumnos.edit',['alumno'=>$editAlumno]);
+    }
+
+
+    public function update_alumno(Request $request,$id){
+
+        $updateAlumno = alumno::find($id);
+        $updateAlumno->nombre_alumno = $request->nombre_alumno;
+        $updateAlumno->promedio = $request->promedio;
+        $updateAlumno->carrera = $request->carrera;
+        $updateAlumno->mencion_honorifica = $request->mencion_honorifica;
+        $updateAlumno->mencion_excelencia = $request->mencion_excelencia;
+        $updateAlumno->asistencia = $request->asistencia;
+        $updateAlumno->save();
+
+
+        return redirect ('/alumnos/lista')->with('status','El alumno se actualizó correctamente');
+    }
 }
